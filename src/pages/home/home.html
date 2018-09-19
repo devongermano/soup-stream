@@ -1,17 +1,48 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+<!--<ion-header>-->
+<!--<ion-navbar>-->
+<!--<button ion-button menuToggle>-->
+<!--<ion-icon name="menu"></ion-icon>-->
+<!--</button>-->
+<!--<ion-title>Home</ion-title>-->
+<!--</ion-navbar>-->
+<!--</ion-header>-->
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content padding style="background-color: #222222">
+
+  <div class="header" *ngIf="tmdbDayMovies.length > 0">
+    <div class="header-background">
+      <img height="100%" src="{{movieService.getTMDBPosterUrl(tmdbDayMovies[1].backdrop_path)}}">
+      <div class="header-background-overlay"></div>
+    </div>
+    <div class="header-foreground">
+        <h2>{{tmdbDayMovies[1].title}}</h2>
+        <button>Resume</button>
+    </div>
+  </div>
+
+  <div class="video"></div>
+
+  <div style="height: 200px;">
+    <div style="color: white; font-weight: bold;">Trending Movies Today</div>
+    <ion-slides slidesPerView="3" spaceBetween="10">
+      <ng-container *ngFor="let i of tmdbDayMovies">
+        <ion-slide>
+          <div><img (click)="stream(i)" style="width: 100%" src="{{movieService.getTMDBPosterUrl(i.poster_path)}}"/></div>
+        </ion-slide>
+      </ng-container>
+    </ion-slides>
+  </div>
+
+  <div style="height: 200px;">
+    <div style="color: white; font-weight: bold;">Continue Watching</div>
+    <ion-slides slidesPerView="3" spaceBetween="10">
+      <ng-container *ngFor="let i of tmdbDayMovies">
+        <ion-slide>
+          <div><img style="width: 100%" src="{{movieService.getTMDBPosterUrl(i.poster_path)}}"/></div>
+        </ion-slide>
+      </ng-container>
+    </ion-slides>
+  </div>
+
+
 </ion-content>

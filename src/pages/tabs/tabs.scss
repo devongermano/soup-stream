@@ -1,0 +1,18 @@
+
+
+.tabs-ios .tabbar {
+  background-color: #191818;
+  border: 0;
+}
+
+.tabs-ios .tab-button {
+  color: aliceblue;
+}
+
+.tabs-ios .tab-button[aria-selected=true] {
+  color: #15b5c2;
+}
+
+.tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+  color: #15b5c2;
+}
